@@ -10,7 +10,7 @@ import {
 import Button from './src/components/Button'
 import Display from './src/components/Display'
 
-const App: () => React$Node = () => {
+const App = () => {
   const [displayValue, setDisplayValue] = useState('0')
   const [operator, setOperator] = useState([])
   const [isInOperation, setIsInOperation] = useState(false)
@@ -54,17 +54,17 @@ const App: () => React$Node = () => {
   }
 
   const setOperation = operation => {
-      setIsInOperation(true) 
+    setIsInOperation(true) 
 
-      if (operator.length === 0) {
-        setOperator([displayValue])
-      } else if (operator.length === 1) {
-        const op = eval(`${Number(operator[0])} ${signal} ${Number(displayValue)}`)
-        setDisplayValue(op)
-        setOperator([op])
-      }
+    if (operator.length === 0) {
+      setOperator([displayValue])
+    } else if (operator.length === 1) {
+      const op = eval(`${Number(operator[0])} ${signal} ${Number(displayValue)}`)
+      setDisplayValue(op)
+      setOperator([op])
+    }
 
-      setSignal(operation)
+    setSignal(operation)
   }
 
   return (
@@ -74,7 +74,7 @@ const App: () => React$Node = () => {
         <Display value={displayValue} />
 
         <View style={styles.buttons}>
-        <Button label="7" onClick={addDigit} />
+          <Button label="7" onClick={addDigit} />
           <Button label="8" onClick={addDigit} />
           <Button label="9" onClick={addDigit} />
           <Button typeOperation label="/" onClick={setOperation} />
